@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第1回 ウリハッキョゲームコンテスト 結果報告</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --c-bg: #f8f6f2;
+      --c-surface: #ffffff;
+      --c-card: #ffffff;
+      --c-border: #e8e4dd;
+      --c-accent: #ff6b35;
+      --c-accent2: #e8a000;
+      --c-accent3: #06b68a;
+      --c-blue: #3b7ddd;
+      --c-purple: #7c5cbf;
+      --c-text: #1a1a2e;
+      --c-text-dim: #5a5a72;
+      --c-gold: #d4a017;
+      --c-silver: #8a8a8a;
+      --c-bronze: #cd7f32;
+      --font-main: 'Zen Kaku Gothic New', sans-serif;
+      --font-kr: 'Noto Sans KR', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--c-bg);
+      color: var(--c-text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(76, 151, 255, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 30%, rgba(153, 102, 255, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 80%, rgba(255, 107, 53, 0.08) 0%, transparent 60%);
+      z-index: 0;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1.4rem;
+      border: 1px solid var(--c-accent);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--c-accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 2rem;
+      background: rgba(255, 107, 53, 0.06);
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.8s 0.15s ease both;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--c-accent), var(--c-accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--c-text-dim);
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 0.8s 0.3s ease both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 3rem;
+      animation: fadeInUp 0.8s 0.45s ease both;
+    }
+
+    .hero-stat-num {
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--c-accent), var(--c-accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-stat-label {
+      font-size: 0.85rem;
+      color: var(--c-text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+      color: var(--c-text-dim);
+      font-size: 0.8rem;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .scroll-hint::after {
+      content: '▼';
+      display: block;
+      margin-top: 0.3rem;
+      font-size: 1.2rem;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--c-accent);
+      border: 1px solid rgba(255, 107, 53, 0.3);
+      background: rgba(255, 107, 53, 0.05);
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 900;
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+
+    /* ===== REVIEW ===== */
+    .review-section {
+      border-bottom: 1px solid var(--c-border);
+      padding-bottom: 4rem;
+    }
+
+    .review-block {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .review-block h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--c-accent);
+    }
+
+    .review-block p {
+      color: var(--c-text-dim);
+      font-size: 0.95rem;
+      line-height: 2;
+    }
+
+    .criteria-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .criteria-list li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--c-text-dim);
+      font-size: 0.95rem;
+    }
+
+    .criteria-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--c-accent);
+    }
+
+    /* ===== WINNER CARDS ===== */
+    .winners-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .winner-card {
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .winner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    }
+
+    .winner-card.grand-prize {
+      border: 2px solid var(--c-gold);
+      box-shadow: 0 4px 24px rgba(212, 160, 23, 0.15);
+    }
+
+    .winner-card.special-prize {
+      border: 2px solid var(--c-accent);
+      box-shadow: 0 4px 24px rgba(255, 107, 53, 0.12);
+    }
+
+    .card-header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .prize-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .prize-badge.grand {
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      color: #1a1a2e;
+    }
+
+    .prize-badge.nklabo {
+      background: linear-gradient(135deg, var(--c-accent), #ff8f5e);
+      color: #fff;
+    }
+
+    .prize-badge.middle {
+      background: linear-gradient(135deg, var(--c-blue), #6db3ff);
+      color: #fff;
+    }
+
+    .prize-badge.elementary {
+      background: linear-gradient(135deg, var(--c-accent3), #3ee8b5);
+      color: #1a1a2e;
+    }
+
+    .prize-badge.honorable {
+      background: linear-gradient(135deg, var(--c-purple), #b388ff);
+      color: #fff;
+    }
+
+    .card-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .card-name .kr { font-family: var(--font-kr); }
+
+    .card-school {
+      font-size: 0.8rem;
+      color: var(--c-text-dim);
+      width: 100%;
+    }
+
+    .card-embed {
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card-embed iframe {
+      border-radius: 12px;
+      border: 1px solid #e0ddd6;
+      max-width: 100%;
+    }
+
+    .card-embed-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--c-blue);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .card-embed-link:hover {
+      color: var(--c-accent);
+      text-decoration: underline;
+    }
+
+    .card-review {
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .card-review h4 {
+      font-size: 0.8rem;
+      color: var(--c-accent);
+      letter-spacing: 0.15em;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-review p {
+      font-size: 0.92rem;
+      color: var(--c-text-dim);
+      line-height: 1.9;
+    }
+
+    /* ===== HONORABLE SECTION ===== */
+    .honorable-section {
+      border-top: 1px solid var(--c-border);
+      margin-top: 2rem;
+      padding-top: 4rem;
+    }
+
+    .honorable-note {
+      background: var(--c-card);
+      border-left: 3px solid var(--c-purple);
+      padding: 1rem 1.5rem;
+      margin-bottom: 3rem;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.9rem;
+      color: var(--c-text-dim);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      border-top: 1px solid var(--c-border);
+      color: var(--c-text-dim);
+      font-size: 0.85rem;
+    }
+
+    footer p { margin-bottom: 0.5rem; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      .hero-stats { gap: 1.5rem; }
+      .hero-stat-num { font-size: 2rem; }
+      .card-header { padding: 1.2rem 1.5rem; }
+      .card-embed { padding: 0 1rem; }
+      .card-embed iframe { width: 100%; height: 340px; }
+      .card-review { padding: 1.2rem 1.5rem 1.5rem; }
+      .review-block { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">RESULTS 2026</div>
+      <h1>第1回<br><span class="highlight">ウリハッキョ<br>ゲームコンテスト</span></h1>
+      <p class="hero-sub">結果報告</p>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">11</div>
+          <div class="hero-stat-label">参加校</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">84</div>
+          <div class="hero-stat-label">エントリー</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">71</div>
+          <div class="hero-stat-label">提出作品</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </div>
+
+  <!-- REVIEW -->
+  <section class="review-section">
+    <div class="section-label">OVERVIEW</div>
+    <h2 class="section-title">全体の講評</h2>
+
+    <div class="review-block fade-in">
+      <p>今大会には全11校から84件のエントリーがあり、そのうち71件の作品が提出されました。まず何よりもお伝えしたいのは、作品を提出したこと自体が最も価値のあることです。自分のアイデアを形にし、それを全国のウリハッセンに向けて発信するという行為には大きな勇気と相応の熱意・労力が必要です。提出されたすべての方に敬意を表します。</p>
+    </div>
+
+    <div class="review-block fade-in">
+      <h3>審査の観点</h3>
+      <p>本コンテストの趣旨は、ウリハッキョにおけるプログラミング教育のアウトプットの場を設け、全国のウリハッキョの教育レベル向上と交流機会の創出を図ることにあります。審査にあたっては、主に以下の観点から評価を行いました。</p>
+      <ul class="criteria-list">
+        <li><strong>アイデア</strong> ― テーマ設定や発想に独自性があるか</li>
+        <li><strong>実装技術</strong> ― 制御構造やデータ管理など、プログラミングの工夫が見られるか</li>
+        <li><strong>完成度</strong> ― 致命的なバグがなく、最後まで遊べる状態であるか</li>
+        <li><strong>面白さ</strong> ― 思わず遊び続けてしまうような魅力があるか</li>
+      </ul>
+    </div>
+
+    <div class="review-block fade-in">
+      <h3>既存作品の利用について</h3>
+      <p>提出作品の中には、Scratch上に公開されている既存の作品をベースにしたものも見受けられました。Scratchにはリミックス文化という素晴らしい文化があり、他の人の作品を元に学び、改良していくこと自体は大いに尊重されるべきものです。ただし、今回の審査においては、既存の作品をそのまま利用しているものよりも、リミックスを土台としつつも、その上に独創的な要素を加えている作品をより高く評価しました。</p>
+    </div>
+
+    <div class="review-block fade-in">
+      <h3>作品全体を通じて感じたこと</h3>
+      <p>提出された作品のいずれからも、とてつもない時間と熱量が伝わってきました。特に印象的だったのは、多くの作品にウリハッキョならではの民族性が自然と溢れていた点です。BGMに朝鮮の音楽を取り入れたり、テーマにウリハッキョでの日常や文化を反映させたりと、自分たちのアイデンティティを作品に込めている姿が数多く見られました。技術やアイデアだけでなく、こうした「ウリ式」の感性が光る作品が多かったことは、このコンテストならではの大きな特徴であり、審査団としても大変嬉しく思います。</p>
+    </div>
+  </section>
+
+  <!-- WINNERS -->
+  <section>
+    <div class="section-label">WINNERS</div>
+    <h2 class="section-title">受賞者（12名）</h2>
+
+    <div class="winners-grid">
+
+      <!-- 最優秀賞 -->
+      <div class="winner-card grand-prize fade-in">
+        <div class="card-header">
+          <span class="prize-badge grand">🏆 最優秀賞</span>
+          <span class="card-name">金志遠</span>
+          <span class="card-school">北大阪朝鮮初級学校 初級部5年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1279071402/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279071402/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>シンプルな実装でありながらも、楽しく遊べる作品であるのが特徴的でした。特に操作感が素晴らしく、完成度の高さが際立っていたため、最優秀賞とさせていただきました。構造がすっきりしているため、バグが発生しにくく、教材として活用もしやすい作品です。思わず遊び続けてしまう中毒性がありました。</p>
+        </div>
+      </div>
+
+      <!-- NKLabo賞 -->
+      <div class="winner-card special-prize fade-in">
+        <div class="card-header">
+          <span class="prize-badge nklabo">🎖 NKLabo賞</span>
+          <span class="card-name"><span class="kr">金来稀</span></span>
+          <span class="card-school">神奈川朝鮮中高級学校 中級部3年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1278059335/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1278059335/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>Scratchを使い、ここまでの操縦感を表現しようとした挑戦、パラメータの調整など、粘り強く試行錯誤を重ねた跡が伝わるとてもいい作品でした。ソフトウェア設計なども学び、実践していくことでさらに洗練された作品になると思います。また、ハードウェアの方も是非チャレンジして欲しいと思えるような素敵な作品でした。</p>
+        </div>
+      </div>
+
+      <!-- 中級部賞① -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge middle">中級部賞①</span>
+          <span class="card-name"><span class="kr">宋太煌</span></span>
+          <span class="card-school">神奈川朝鮮中高級学校 中級部2年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1246326077/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1246326077/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>ゲーム性も高く、完成度も高い、お手本のように素晴らしい作品でした。また、制御構造をよく理解して、ソースコードを整理していました。今後もいろんな作品を世の中に生み出してほしいです。</p>
+        </div>
+      </div>
+
+      <!-- 中級部賞② -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge middle">中級部賞②</span>
+          <span class="card-name"><span class="kr">鄭起思</span></span>
+          <span class="card-school">千葉朝鮮初中級学校 中級部2年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1261644111/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1261644111/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>音のオンオフやリスタートなど、細かいところにも手が行き届いており、こだわりが見える作品でした。楽しくトレーニングできます。音楽のチョイスも最高でした。</p>
+        </div>
+      </div>
+
+      <!-- 中級部賞③ -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge middle">中級部賞③</span>
+          <span class="card-name"><span class="kr">洪彗玲</span></span>
+          <span class="card-school">神奈川朝鮮中高級学校 中級部2年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1249772689/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1249772689/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>懐かしさと親近感を覚える、心に残る作品でした。優しい世界観をうまく表現している点がとても評価が高かったです。技術面もさらに磨いていくと、この世界観がもっと活きてくると思います。</p>
+        </div>
+      </div>
+
+      <!-- 初級部賞① -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge elementary">初級部賞①</span>
+          <span class="card-name"><span class="kr">金紗蘭</span></span>
+          <span class="card-school">千葉朝鮮初中級学校 初級部5年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1279682211/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279682211/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>ウリハッキョで過ごした日々にタイムスリップしたような体験を得られる作品でした。自信に溢れるウリ式のノリが楽しく、音楽の使い方がとても上手です。これからもこの感性を活かして、いろんな作品にチャレンジしてほしいと思います。</p>
+        </div>
+      </div>
+
+      <!-- 初級部賞② -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge elementary">初級部賞②</span>
+          <span class="card-name"><span class="kr">河埈永</span></span>
+          <span class="card-school">東大阪朝鮮初級学校 初級部6年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1269990912/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1269990912/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>試験で回答を消してくる消しゴムという、敵キャラの設定が秀逸でした。戦いの末、試験の結果はどうなったのかが一番気になるところです。とても楽しくプレイしました。</p>
+        </div>
+      </div>
+
+      <!-- 初級部賞③ -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge elementary">初級部賞③</span>
+          <span class="card-name">金世穏</span>
+          <span class="card-school">京都朝鮮初級学校 初級部4年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1279535672/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279535672/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>最強を目指すというアツいテーマが良かったです。박치기が一番強い攻撃オプションなのが特にアツいです。気合を感じます。技術的には、定義ブロックを使って攻撃ロジックを再利用しているところが素敵でした。</p>
+        </div>
+      </div>
+
+      <!-- 初級部賞④ -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge elementary">初級部賞④</span>
+          <span class="card-name">李基世</span>
+          <span class="card-school">横浜朝鮮初級学校 初級部4年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1279010386/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279010386/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>条件や仕掛けをたくさん試行錯誤しながら作った作品だと思います。リストをうまく使って、データの管理を工夫しているところがとても良かったです。一歩進んで、いろんなデータの持ち方やその扱い方があることも学んでいけば、さらに出来ることが増えると思いますので、ぜひチャレンジしてもらいたいです。</p>
+        </div>
+      </div>
+
+      <!-- 初級部賞⑤ -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge elementary">初級部賞⑤</span>
+          <span class="card-name">朴泰錬</span>
+          <span class="card-school">滋賀朝鮮初級学校・附属幼稚班 初級部6年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1272025585/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1272025585/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>スキン替え機能と、キャラデザインがとても良かったです。どんなキャラで戦うか、どんな敵に変わるのだろうかという楽しみがありました。実装としては基本に忠実で、制御やイベント処理についてしっかり身についています。</p>
+        </div>
+      </div>
+
+      <!-- 初級部賞⑥ -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge elementary">初級部賞⑥</span>
+          <span class="card-name">権優衣</span>
+          <span class="card-school">京都朝鮮初級学校 初級部6年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1279532869/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279532869/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>エリアは広いですが、案外鬼は近くにいて、速さでは追いつかれるので、角度で……といった、どう攻略するか考えさせる作品でした。実装面では、3つ目のスプライトが逃げ切りタイムを管理するエージェントとして動いているのが印象的でした。こういう実装も面白いです。</p>
+        </div>
+      </div>
+
+      <!-- 初級部賞⑦ -->
+      <div class="winner-card fade-in">
+        <div class="card-header">
+          <span class="prize-badge elementary">初級部賞⑦</span>
+          <span class="card-name">金太玄</span>
+          <span class="card-school">京都朝鮮初級学校 初級部4年</span>
+        </div>
+        <div class="card-embed">
+          <iframe src="https://scratch.mit.edu/projects/1279796027/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279796027/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
+        </div>
+        <div class="card-review">
+          <h4>講評</h4>
+          <p>遊び心が満載な作品でした。必殺技や難易度に応じた敵キャラの変化などワクワクしました。実装面も場合分けをしっかり考えて作られている点が良かったです。重複する箇所などを整理しながら改良を重ねていくと、さらにレベルアップできます。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- CLOSING -->
+  <section class="review-section fade-in" style="border-bottom: none;">
+    <div class="section-label">CLOSING</div>
+    <h2 class="section-title">最後に</h2>
+    <div class="review-block">
+      <p>受賞の有無にかかわらず、今回の経験がみなさんの成長の糧となれば、それこそがこの大会の目的を達成したことになります。提出された作品はScratch上で公開されています。他のウリハッセンの作品を見て、遊んで、コードを読んで、そこから学びを深めてください。そしてぜひ、次回もチャレンジしてほしいと思います。</p>
+      <p style="margin-top: 1rem; font-weight: 700; color: var(--c-accent);">すべての参加者のみなさん、本当にお疲れさまでした！</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>第1回 ウリハッキョゲームコンテスト</p>
+    <p>© 2026 All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
