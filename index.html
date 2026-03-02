@@ -311,11 +311,58 @@
       justify-content: center;
     }
 
+
+    .embed-placeholder {
+      position: relative;
+      width: 485px;
+      max-width: 100%;
+      aspect-ratio: 485 / 402;
+      border-radius: 12px;
+      border: 1px solid #e0ddd6;
+      overflow: hidden;
+      cursor: pointer;
+      background: #f0ede8;
+    }
+
+    .embed-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.2s ease;
+    }
+
+    .embed-placeholder:hover .embed-thumb {
+      filter: brightness(0.85);
+    }
+
+    .embed-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 107, 53, 0.92);
+      color: #fff;
+      padding: 0.7rem 1.6rem;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .embed-placeholder:hover .embed-play-btn {
+      transform: translate(-50%, -50%) scale(1.05);
+      background: rgba(255, 107, 53, 1);
+    }
+
     .card-embed iframe {
       border-radius: 12px;
       border: 1px solid #e0ddd6;
       max-width: 100%;
     }
+
 
     .card-embed-link {
       display: inline-flex;
@@ -484,7 +531,10 @@
           <span class="card-school">北大阪朝鮮初級学校 初級部5年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1279071402/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1279071402" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1279071402_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279071402/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -501,7 +551,10 @@
           <span class="card-school">神奈川朝鮮中高級学校 中級部3年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1278059335/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1278059335" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1278059335_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1278059335/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -518,7 +571,10 @@
           <span class="card-school">神奈川朝鮮中高級学校 中級部2年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1246326077/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1246326077" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1246326077_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1246326077/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -535,7 +591,10 @@
           <span class="card-school">千葉朝鮮初中級学校 中級部2年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1261644111/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1261644111" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1261644111_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1261644111/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -552,7 +611,10 @@
           <span class="card-school">神奈川朝鮮中高級学校 中級部2年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1249772689/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1249772689" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1249772689_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1249772689/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -569,7 +631,10 @@
           <span class="card-school">千葉朝鮮初中級学校 初級部5年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1279682211/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1279682211" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1279682211_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279682211/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -586,7 +651,10 @@
           <span class="card-school">東大阪朝鮮初級学校 初級部6年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1269990912/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1269990912" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1269990912_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1269990912/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -603,7 +671,10 @@
           <span class="card-school">京都朝鮮初級学校 初級部4年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1279535672/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1279535672" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1279535672_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279535672/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -620,7 +691,10 @@
           <span class="card-school">横浜朝鮮初級学校 初級部4年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1279010386/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1279010386" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1279010386_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279010386/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -637,7 +711,10 @@
           <span class="card-school">滋賀朝鮮初級学校・附属幼稚班 初級部6年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1272025585/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1272025585" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1272025585_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1272025585/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -654,7 +731,10 @@
           <span class="card-school">京都朝鮮初級学校 初級部6年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1279532869/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1279532869" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1279532869_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279532869/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -671,7 +751,10 @@
           <span class="card-school">京都朝鮮初級学校 初級部4年</span>
         </div>
         <div class="card-embed">
-          <iframe src="https://scratch.mit.edu/projects/1279796027/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+          <div class="embed-placeholder" data-project="1279796027" onclick="loadEmbed(this)">
+            <img src="https://uploads.scratch.mit.edu/get_image/project/1279796027_480x360.png" alt="作品サムネイル" class="embed-thumb">
+            <div class="embed-play-btn">▶ 作品をプレイ</div>
+          </div>
           <a class="card-embed-link" href="https://scratch.mit.edu/projects/1279796027/" target="_blank" rel="noopener">🔗 Scratchで開く</a>
         </div>
         <div class="card-review">
@@ -701,6 +784,24 @@
   </footer>
 
   <script>
+
+    // Load Scratch embed on click
+    function loadEmbed(el) {
+      const projectId = el.dataset.project;
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://scratch.mit.edu/projects/' + projectId + '/embed';
+      iframe.setAttribute('allowtransparency', 'true');
+      iframe.setAttribute('width', '485');
+      iframe.setAttribute('height', '402');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('scrolling', 'no');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.style.borderRadius = '12px';
+      iframe.style.border = '1px solid #e0ddd6';
+      iframe.style.maxWidth = '100%';
+      el.replaceWith(iframe);
+    }
+
     // Intersection Observer for fade-in animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
